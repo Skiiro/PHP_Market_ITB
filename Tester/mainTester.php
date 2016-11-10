@@ -8,9 +8,14 @@
 
 include './tester.php';
 
+//////////////USER//////////////
 //testerBdd::testerUserBdd();
 //testerBdd::testPasswordBdd();
-testerBdd::testerCategoryProduct();
 
+//////////////PRODUCTS//////////////
+//testerBdd::testerCategoryProduct();
+//testerBdd::testerProduct();
 
+//////////////BILL//////////////
+//testerBdd::testerBill();
 

@@ -387,4 +387,111 @@ class bdd
             return false;
     }
 
+    /////////////////////////////////////////////////////////////////BILLS/////////////////////////////////////////////////////////////////
+
+    /**
+     * Create a new Bill in the database
+     * @param $name -> name
+     * @param $products -> array of products id
+     * @return bool -> request success or not
+     */
+    function createBill($name, $products)
+    {
+        if($this->state) {
+            $now = date("Y/m/d H:i:d");
+            echo $now;
+            $sql = 'INSERT INTO Facture (Date, Pseudonyme_Utilisateur)
+                    VALUES(:date, :name)';
+            $request = $this->pdo->prepare($sql);
+            if($request->execute(array(':name' => $name, ':date' => $now)) == true)
+            {
+                foreach($products as $value)
+                {
+                    $sql = 'INSERT INTO Porter_Sur (Id_Facture, Id_Produit)
+                    VALUES((SELECT Id FROM Facture WHERE Pseudonyme_Utilisateur = :name AND Date = :date), :idProduit)';
+                    $request = $this->pdo->prepare($sql);
+                    if($request->execute(array(':name' => $name, ':date' => $now, ':idProduit' => $value)) == false)
+                        return false;
+                }
+                return true;
+            }
+            else
+                return false;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Delete a bill from the database
+     * @param $id -> id of the bill
+     * @return bool -> request success or not
+     */
+    function deleteBill($id)
+    {
+        if($this->state) {
+            $sql = 'DELETE FROM Facture 
+                    WHERE Id = :id';
+            $request = $this->pdo->prepare($sql);
+            if ($request->execute(array(':id' => $id)) == true)
+            {
+                $sql = 'DELETE FROM Porter_Sur 
+                    WHERE Id_Facture = :id';
+                $request = $this->pdo->prepare($sql);
+                return $request->execute(array(':id' => $id));
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This function get all bills for a user from the database
+     * @return array -> Result from the database |null -> if an error occurs
+     */
+    function getBills($name)
+    {
+        if($this->state) {
+            $sql = 'SELECT Id, Date
+                    FROM Facture
+                    WHERE Pseudonyme_Utilisateur = :name';
+            $request = $this->pdo->prepare($sql);
+            $success = $request->execute(array(':name' => $name));
+            if ($success == false)
+                return NULL;
+            else
+                return $request->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else
+            return NULL;
+    }
+
+    /**
+     * This function get all details for a bill from the database
+     * @return array -> Result from the database |null -> if an error occurs
+     */
+    function getDetailsBill($id)
+    {
+        if($this->state) {
+            $sql = 'SELECT Id_Produit, count(Id_Produit) AS "Quantity"
+                    FROM Porter_Sur
+                    WHERE Id_Facture = :idFacture
+                    GROUP BY Id_Produit';
+            $request = $this->pdo->prepare($sql);
+            $success = $request->execute(array(':idFacture' => $id));
+            if ($success == false)
+                return NULL;
+            else
+                return $request->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else
+            return NULL;
+    }
+
 }
