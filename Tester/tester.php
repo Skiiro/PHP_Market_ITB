@@ -18,27 +18,27 @@ class testerBdd
     static function testerUserBdd()
     {
         $bdd = new bdd();
-        echo "I will create the user ccleouf".PHP_EOL;
-        $user = $bdd->createUser("ccleouf", "azerty", "Connan", "Cyril", "8 impasse de la tuillerie", "cyril.connan@imerir.com");
+        echo "I will create the user userTest".PHP_EOL;
+        $return = $bdd->createUser("userTest", "azerty", "Surname", "Name", "address", "Name.Surname@imerir.com");
         echo "I will see the users in the database".PHP_EOL;
-        $user = $bdd->getUsers();
-        foreach($user as $value)
+        $return = $bdd->getUsers();
+        foreach($return as $value)
         {
             var_dump($value);
         }
-        echo "I will update the user with nickname ccleouf with Leila Garcia which living in 2 rue de villeroge in Perpignan".PHP_EOL;
-        $user = $bdd->updateUser("Leila", "Garcia", "2 rue de villeroge 66100 PERPIGNAN", "leilagarcia@orange.fr", "ccleouf");
-        echo "Check if the user ccleouf has been modify".PHP_EOL;
-        $user = $bdd->getUsers();
-        foreach($user as $value)
+        echo "I will update the user with nickname userTest with Leila Garcia which living in 2 rue de villeroge in Perpignan".PHP_EOL;
+        $return = $bdd->updateUser("Leila", "Garcia", "2 rue de villeroge 66100 PERPIGNAN", "leilagarcia@orange.fr", "userTest");
+        echo "Check if the user userTest has been modify".PHP_EOL;
+        $return = $bdd->getUsers();
+        foreach($return as $value)
         {
             var_dump($value);
         }
-        echo "I will delete ccleouf".PHP_EOL;
-        $user = $bdd->deleteUser("ccleouf");
-        echo "Check if the ccleouf has been deleted".PHP_EOL;
-        $user = $bdd->getUsers();
-        foreach($user as $value)
+        echo "I will delete userTest".PHP_EOL;
+        $return = $bdd->deleteUser("userTest");
+        echo "Check if the userTest has been deleted".PHP_EOL;
+        $return = $bdd->getUsers();
+        foreach($return as $value)
         {
             var_dump($value);
         }
@@ -50,33 +50,33 @@ class testerBdd
     static function testPasswordBdd()
     {
         $bdd = new bdd();
-        echo "I will create the user ccleouf with 'azerty' password".PHP_EOL;
-        $user = $bdd->createUser("ccleouf", "azerty", "Connan", "Cyril", "8 impasse de la tuillerie", "cyril.connan@imerir.com");
+        echo "I will create the user userTest with 'azerty' password".PHP_EOL;
+        $return = $bdd->createUser("userTest", "azerty", "Surname", "Name", "address", "Name.Surname@imerir.com");
         echo "Let see if the user has been created".PHP_EOL;
-        $user = $bdd->getUser("ccleouf");
-        foreach($user as $value)
+        $return = $bdd->getUser("userTest");
+        foreach($return as $value)
         {
             var_dump($value);
         }
         echo "Check his password".PHP_EOL;
-        $user = $bdd->getPassword("ccleouf");
-        foreach($user as $value)
+        $return = $bdd->getPassword("userTest");
+        foreach($return as $value)
         {
             var_dump($value);
         }
         echo "Now we change the password to 'ytreza'".PHP_EOL;
-        $user = $bdd->setPassword("ccleouf", "ytreza");
+        $return = $bdd->setPassword("userTest", "ytreza");
         echo "let see if the password has been changed".PHP_EOL;
-        $user = $bdd->getPassword("ccleouf");
-        foreach($user as $value)
+        $return = $bdd->getPassword("userTest");
+        foreach($return as $value)
         {
             var_dump($value);
         }
-        echo "I will delete ccleouf for a future test".PHP_EOL;
-        $user = $bdd->deleteUser("ccleouf");
-        echo "Check if ccleouf has been deleted".PHP_EOL;
-        $user = $bdd->getUser("ccleouf");
-        foreach($user as $value)
+        echo "I will delete userTest for a future test".PHP_EOL;
+        $return = $bdd->deleteUser("userTest");
+        echo "Check if userTest has been deleted".PHP_EOL;
+        $return = $bdd->getUser("userTest");
+        foreach($return as $value)
         {
             var_dump($value);
         }
@@ -90,28 +90,28 @@ class testerBdd
         $bdd = new bdd();
         $id = null;
         echo "I will create a category of object : Test".PHP_EOL;
-        $user = $bdd->createCategoryProduct("Test");
+        $return = $bdd->createCategoryProduct("Test");
         echo "Let see if the category has been created".PHP_EOL;
-        $user = $bdd->getCategoryProducts();
-        foreach($user as $value)
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
         {
             var_dump($value);
             if($value['Nom'] == "Test")
                 $id = $value['Id'];
         }
         echo "Now, modify the name of the 'test' category by 'Mytest'".PHP_EOL;
-        $user = $bdd->updateCategoryProduct($id, "myTest");
+        $return = $bdd->updateCategoryProduct($id, "myTest");
         echo "Check if the name has been modify".PHP_EOL;
-        $user = $bdd->getCategoryProducts();
-        foreach($user as $value)
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
         {
             var_dump($value);
         }
         echo "I will delete Test for a future test".PHP_EOL;
-        $user = $bdd->deleteCategoryProduct($id);
+        $return = $bdd->deleteCategoryProduct($id);
         echo "Let see if the category has been deleted".PHP_EOL;
-        $user = $bdd->getCategoryProducts();
-        foreach($user as $value)
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
         {
             var_dump($value);
         }
@@ -126,46 +126,46 @@ class testerBdd
         $id = null;
         $idProduit = null;
         echo "I will create a category of object : Test".PHP_EOL;
-        $user = $bdd->createCategoryProduct("Test");
+        $return = $bdd->createCategoryProduct("Test");
         echo "Let see if the category has been created".PHP_EOL;
-        $user = $bdd->getCategoryProducts();
-        foreach($user as $value)
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
         {
             var_dump($value);
             if($value['Nom'] == "Test")
                 $id = $value['Id'];
         }
         echo "I will create a product".PHP_EOL;
-        $user = $bdd->createProduct("Test", 20, "", "This is a test product", $id);
+        $return = $bdd->createProduct("Test", 20, "", "This is a test product", $id);
         echo "Let see if the product has been created".PHP_EOL;
-        $user = $bdd->getProducts();
-        foreach($user as $value)
+        $return = $bdd->getProducts();
+        foreach($return as $value)
         {
             var_dump($value);
             if($value['Nom'] == "Test")
                 $idProduit = $value['Id'];
         }
         echo "Now, modify the product Name, price and description by myTest, 50 and 'This is a myTest product".PHP_EOL;
-        $user = $bdd->updateProduct($idProduit, "myTest", 50, "", "This is a myTest product");
+        $return = $bdd->updateProduct($idProduit, "myTest", 50, "", "This is a myTest product");
         echo "Check if the product has been modify".PHP_EOL;
-        $user = $bdd->getProducts();
-        foreach($user as $value)
+        $return = $bdd->getProducts();
+        foreach($return as $value)
         {
             var_dump($value);
         }
         echo "I will delete Test product for a future test".PHP_EOL;
-        $user = $bdd->deleteProduct($idProduit);
+        $return = $bdd->deleteProduct($idProduit);
         echo "Let see if the product has been deleted".PHP_EOL;
-        $user = $bdd->getProducts();
-        foreach($user as $value)
+        $return = $bdd->getProducts();
+        foreach($return as $value)
         {
             var_dump($value);
         }
         echo "I will delete Test category for a future test".PHP_EOL;
-        $user = $bdd->deleteCategoryProduct($id);
+        $return = $bdd->deleteCategoryProduct($id);
         echo "Let see if the category has been deleted".PHP_EOL;
-        $user = $bdd->getCategoryProducts();
-        foreach($user as $value)
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
         {
             var_dump($value);
         }
@@ -182,79 +182,189 @@ class testerBdd
         $idProduit2 = null;
         $idBill = null;
         echo "I will create a category of object : Test".PHP_EOL;
-        $user = $bdd->createCategoryProduct("Test");
+        $return = $bdd->createCategoryProduct("Test");
         echo "Let see if the category has been created".PHP_EOL;
-        $user = $bdd->getCategoryProducts();
-        foreach($user as $value)
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
         {
             var_dump($value);
             if($value['Nom'] == "Test")
                 $idCatProduct = $value['Id'];
         }
         echo "I will create a product".PHP_EOL;
-        $user = $bdd->createProduct("Test", 20, "", "This is a test product", $idCatProduct);
-        $user = $bdd->getProducts();
-        foreach($user as $value)
+        $return = $bdd->createProduct("Test", 20, "", "This is a test product", $idCatProduct);
+        $return = $bdd->getProducts();
+        foreach($return as $value)
         {
             if($value['Nom'] == "Test")
                 $idProduit = $value['Id'];
         }
         echo "I will create a second product".PHP_EOL;
-        $user = $bdd->createProduct("Test2", 20, "", "This is a test second product", $idCatProduct);
+        $return = $bdd->createProduct("Test2", 20, "", "This is a test second product", $idCatProduct);
         echo "Let see if the products has been created".PHP_EOL;
-        $user = $bdd->getProducts();
-        foreach($user as $value)
+        $return = $bdd->getProducts();
+        foreach($return as $value)
         {
             var_dump($value);
             if($value['Nom'] == "Test2")
                 $idProduit2 = $value['Id'];
         }
-        echo "I will create the user ccleouf".PHP_EOL;
-        $user = $bdd->createUser("ccleouf", "azerty", "Connan", "Cyril", "8 impasse de la tuillerie", "cyril.connan@imerir.com");
+        echo "I will create the user userTest".PHP_EOL;
+        $return = $bdd->createUser("userTest", "azerty", "Surname", "Name", "address", "Name.Surname@imerir.com");
         echo "I will see the users in the database".PHP_EOL;
-        $user = $bdd->getUsers();
-        foreach($user as $value)
+        $return = $bdd->getUsers();
+        foreach($return as $value)
         {
             var_dump($value);
         }
         echo "I will create a bill with 3 objects 'Test' ans 1 object 'test2'".PHP_EOL;
-        $user = $bdd->createBill("ccleouf", array($idProduit, $idProduit, $idProduit, $idProduit2));
+        $return = $bdd->createBill("userTest", array($idProduit, $idProduit, $idProduit, $idProduit2));
         echo "Let see if the bill is created".PHP_EOL;
-        $user = $bdd->getBills("ccleouf");
-        foreach($user as $value)
+        $return = $bdd->getBills("userTest");
+        foreach($return as $value)
         {
             var_dump($value);
             $idBill = $value['Id'];
         }
         echo "Let see if the bill details".PHP_EOL;
-        $user = $bdd->getDetailsBill($idBill);
-        foreach($user as $value)
+        $return = $bdd->getDetailsBill($idBill);
+        foreach($return as $value)
         {
             var_dump($value);
         }
-        echo "I will delete ccleouf".PHP_EOL;
-        $user = $bdd->deleteUser("ccleouf");
-        echo "Check if the ccleouf has been deleted".PHP_EOL;
-        $user = $bdd->getUsers();
-        foreach($user as $value)
+        echo "I will delete the bill for a future test".PHP_EOL;
+        $return = $bdd->deleteBill($idBill);
+        echo "I will delete userTest".PHP_EOL;
+        $return = $bdd->deleteUser("userTest");
+        echo "Check if the userTest has been deleted".PHP_EOL;
+        $return = $bdd->getUsers();
+        foreach($return as $value)
         {
             var_dump($value);
         }
         echo "I will delete Test product for a future test".PHP_EOL;
-        $user = $bdd->deleteProduct($idProduit);
+        $return = $bdd->deleteProduct($idProduit);
         echo "I will delete Test 2 product for a future test".PHP_EOL;
-        $user = $bdd->deleteProduct($idProduit2);
+        $return = $bdd->deleteProduct($idProduit2);
         echo "Let see if the products has been deleted".PHP_EOL;
-        $user = $bdd->getProducts();
-        foreach($user as $value)
+        $return = $bdd->getProducts();
+        foreach($return as $value)
         {
             var_dump($value);
         }
         echo "I will delete Test category for a future test".PHP_EOL;
-        $user = $bdd->deleteCategoryProduct($idCatProduct);
+        $return = $bdd->deleteCategoryProduct($idCatProduct);
         echo "Let see if the category has been deleted".PHP_EOL;
-        $user = $bdd->getCategoryProducts();
-        foreach($user as $value)
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
+        {
+            var_dump($value);
+        }
+    }
+
+    /**
+     * This function test all functions for basket in Database
+     */
+    static function testerBasket()
+    {
+        $bdd = new bdd();
+        $idCatProduct = null;
+        $idProduit = null;
+        $idProduit2 = null;
+        $idBill = null;
+        echo "I will create a category of object : Test".PHP_EOL;
+        $return = $bdd->createCategoryProduct("Test");
+        echo "Let see if the category has been created".PHP_EOL;
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
+        {
+            var_dump($value);
+            if($value['Nom'] == "Test")
+                $idCatProduct = $value['Id'];
+        }
+        echo "I will create a product".PHP_EOL;
+        $return = $bdd->createProduct("Test", 20, "", "This is a test product", $idCatProduct);
+        $return = $bdd->getProducts();
+        foreach($return as $value)
+        {
+            if($value['Nom'] == "Test")
+                $idProduit = $value['Id'];
+        }
+        echo "I will create a second product".PHP_EOL;
+        $return = $bdd->createProduct("Test2", 20, "", "This is a test second product", $idCatProduct);
+        echo "Let see if the products has been created".PHP_EOL;
+        $return = $bdd->getProducts();
+        foreach($return as $value)
+        {
+            var_dump($value);
+            if($value['Nom'] == "Test2")
+                $idProduit2 = $value['Id'];
+        }
+        echo "I will create the user userTest".PHP_EOL;
+        $return = $bdd->createUser("userTest", "azerty", "Surname", "Name", "address", "Name.Surname@imerir.com");
+        echo "I will see the users in the database".PHP_EOL;
+        $return = $bdd->getUsers();
+        foreach($return as $value)
+        {
+            var_dump($value);
+        }
+
+        echo "Now we will add 2 products 'test1' and 1 product 'test2' on basket".PHP_EOL;
+        $return = $bdd->insertBasket("userTest", $idProduit);
+        $return = $bdd->insertBasket("userTest", $idProduit);
+        $return = $bdd->insertBasket("userTest", $idProduit2);
+
+        echo "Check if the product has been add to basket".PHP_EOL;
+        $return = $bdd->getBasket("userTest");
+        foreach($return as $value)
+        {
+            var_dump($value);
+        }
+
+        echo "Now I will delete 1 product of 'test1'".PHP_EOL;
+        $return = $bdd->deleteBasketProduct($idProduit, "userTest", 1);
+        if($return)
+            echo "OK";
+        else
+            echo "NOK";
+        echo "Check if the product 'test1' has been deleted 1 time".PHP_EOL;
+        $return = $bdd->getBasket("userTest");
+        foreach($return as $value)
+        {
+            var_dump($value);
+        }
+        echo "Now we will delete all product on basket".PHP_EOL;
+        $return = $bdd->deleteBasket("userTest");
+        echo "Check if all products has been deleted".PHP_EOL;
+        $return = $bdd->getBasket("userTest");
+        foreach($return as $value)
+        {
+            var_dump($value);
+        }
+
+        echo "I will delete userTest".PHP_EOL;
+        $return = $bdd->deleteUser("userTest");
+        echo "Check if the userTest has been deleted".PHP_EOL;
+        $return = $bdd->getUsers();
+        foreach($return as $value)
+        {
+            var_dump($value);
+        }
+        echo "I will delete Test product for a future test".PHP_EOL;
+        $return = $bdd->deleteProduct($idProduit);
+        echo "I will delete Test 2 product for a future test".PHP_EOL;
+        $return = $bdd->deleteProduct($idProduit2);
+        echo "Let see if the products has been deleted".PHP_EOL;
+        $return = $bdd->getProducts();
+        foreach($return as $value)
+        {
+            var_dump($value);
+        }
+        echo "I will delete Test category for a future test".PHP_EOL;
+        $return = $bdd->deleteCategoryProduct($idCatProduct);
+        echo "Let see if the category has been deleted".PHP_EOL;
+        $return = $bdd->getCategoryProducts();
+        foreach($return as $value)
         {
             var_dump($value);
         }

@@ -19,3 +19,5 @@ include './tester.php';
 //////////////BILL//////////////
 //testerBdd::testerBill();
 
+//////////////BASKET//////////////
+testerBdd::testerBasket();

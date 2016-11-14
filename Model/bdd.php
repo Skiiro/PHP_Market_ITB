@@ -147,7 +147,6 @@ class bdd
             $success = $request->execute(array(':nickname' => $nickname));
             if($success == false)
             {
-                echo 'shit';
                 return NULL;
             }
             else
@@ -399,7 +398,6 @@ class bdd
     {
         if($this->state) {
             $now = date("Y/m/d H:i:d");
-            echo $now;
             $sql = 'INSERT INTO Facture (Date, Pseudonyme_Utilisateur)
                     VALUES(:date, :name)';
             $request = $this->pdo->prepare($sql);
@@ -431,13 +429,13 @@ class bdd
     function deleteBill($id)
     {
         if($this->state) {
-            $sql = 'DELETE FROM Facture 
-                    WHERE Id = :id';
+            $sql = 'DELETE FROM Porter_Sur 
+                    WHERE Id_Facture = :id';
             $request = $this->pdo->prepare($sql);
             if ($request->execute(array(':id' => $id)) == true)
             {
-                $sql = 'DELETE FROM Porter_Sur 
-                    WHERE Id_Facture = :id';
+                $sql = 'DELETE FROM Facture 
+                    WHERE Id = :id';
                 $request = $this->pdo->prepare($sql);
                 return $request->execute(array(':id' => $id));
             }
@@ -494,4 +492,88 @@ class bdd
             return NULL;
     }
 
+    /////////////////////////////////////////////////////////////////Basket/////////////////////////////////////////////////////////////////
+    /**
+     * Insert a new product on a user basket
+     * @param $name -> name
+     * @param $idProduct -> product id
+     * @return bool -> request success or not
+     */
+    function insertBasket($name, $idProduct)
+    {
+        if($this->state) {
+            $sql = 'INSERT INTO Panier (Id_Produit, Pseudonyme_Utilisateur)
+                    VALUES(:idProduit,:name)';
+            $request = $this->pdo->prepare($sql);
+            return $request->execute(array(':name' => $name, 'idProduit' => $idProduct));
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Delete a product from a user basket
+     * @param $idProduct -> product id
+     * @param $name -> user name
+     * @param $quantity -> quantity to remove
+     * @return bool -> request success or not
+     */
+    function deleteBasketProduct($idProduct, $name, $quantity)
+    {
+        if($this->state) {
+            $sql = 'DELETE FROM Panier
+                    WHERE Id_Produit = :id AND Pseudonyme_Utilisateur = :name LIMIT :quantity';
+            $request = $this->pdo->prepare($sql);
+            //Here I have to use bindValue because quantity field must be considerate as a integer and not a string
+            $request->bindValue(':quantity', intval($quantity), PDO::PARAM_INT);
+            $request->bindValue(':name', $name);
+            $request->bindValue(':id', $idProduct);
+            return $request->execute();
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * delete a basket for a user
+     * @param $name -> user name
+     * @return bool -> request success or not
+     */
+    function deleteBasket($name)
+    {
+        if($this->state) {
+            $sql = 'DELETE FROM Panier
+                    WHERE Pseudonyme_Utilisateur = :name';
+            $request = $this->pdo->prepare($sql);
+            return $request->execute(array(':name' => $name));
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     *
+     * @param $name
+     * @return array|null
+     */
+    function getBasket($name)
+    {
+        if($this->state) {
+            $sql = 'SELECT Id_Produit, count(Id_Produit) AS "Quantity"
+                    FROM Panier
+                    WHERE Pseudonyme_Utilisateur = :name
+                    GROUP BY Id_Produit';
+            $request = $this->pdo->prepare($sql);
+            $success = $request->execute(array(':name' => $name));
+            if ($success == false)
+                return NULL;
+            else
+                return $request->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else
+            return NULL;
+    }
 }
