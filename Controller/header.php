@@ -22,7 +22,7 @@
 <body>
 
     <div id="haut" class="ui top fixed wide menu my-navbar">
-        <a class="active item"">
+        <a class="item"">
             Home
         </a>
         <a class="item">
@@ -32,8 +32,13 @@
             Cosplay
         </a>
         <div class="right menu">
-            <a class="ui item">
-                Login
-            </a>
+            <div class="ui pointing dropdown link item">
+                <span class="text">Login</span>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item">Sign in</div> <!--Se connecter-->
+                    <div class="item">Sign up</div> <!--S'enregistrer-->
+                </div>
+            </div>
         </div>
     </div>

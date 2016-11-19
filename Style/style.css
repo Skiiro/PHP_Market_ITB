@@ -21,7 +21,7 @@ p.underTitle{
     background-color: rgba(0,0,0,0.8) !important;
 }
 
-.my-navbar>a,.my-navbar>div>a{
+.my-navbar>a,.my-navbar>div>a,.my-navbar>div>div>span,.my-navbar>div>div>i{
     color: yellow !important;
 }
 
