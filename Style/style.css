@@ -1,24 +1,24 @@
 h1 {
-    color: red;
+    color: black;
     text-align: center;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 400% !important;
 }
 
 body {
-    background :url(https://s2.qwant.com/thumbr/0x0/6/6/07f84feffe228936c901fb1acb36fe/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fcanelada.com.br%2Fwp-content%2Fuploads%2F2011%2F03%2Fkill_bill_191.jpeg&q=0&b=1&p=0&a=1);
+    background :url('./../Image/mainTheme.jpeg');
     background-size: 100%;
 }
 
 p.underTitle{
     text-align: center;
-}
-
-div.card{
-    /*text-align: center;*/
+    font-family: 'Fjalla One', sans-serif;
+    color: red;
+    font-size: 200%;
 }
 
 .my-navbar{
     background-color: rgba(0,0,0,0.8) !important;
-    height: 80px !important;
 }
 
 .my-navbar>a,.my-navbar>div>a{
@@ -32,4 +32,8 @@ div.card{
 
 .content-site{
     margin-top: 80px;
+}
+
+.productImage{
+    width: 120px;
 }

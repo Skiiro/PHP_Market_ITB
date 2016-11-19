@@ -1,2 +1,21 @@
-# Semantic-UI library from http://semantic-ui.com : CSS library OPEN SOURCE
+	LIBRARY
+#Semantic-UI library from http://semantic-ui.com / CSS library OPEN SOURCE
 
+	IMAGE
+		WALLPAPER
+#Main wallpapers from http://canelada.com.br / Filename: mainTheme.jpeg / movie jacket from Kill Bill
+
+		WEAPONS
+#Katana from http://articulo.mercadolibre.com.mx / Filename: katana_Beatrix_Kiddo.jpg / katana of Beatrix Kiddo from the movie Kill Bill
+#Meteor hammer product from http://pixgood.com / Filename: MeteorHammer.jpg / Meteor hammer of Gogo Yubari from the movie Kill Bill
+#Shotgun from http://americaremembers.com / Filename: shotgun_Bud.jpg / shotgun
+#Knife from http://yourprops.com / Filename: knife.jpg / Knife of Vernita Green from the movie Kill Bill
+#Revolver from http://originalProp.com / Filename: revolver.jpg / Revolver of Bill from the movie Kill Bill
+
+		
+		COSPLAY
+#Picture of Pai Mei FROM http://quizz.biz / Filename : barbe.jpg / picture of Pai Mei from the movie Kill Bill
+#Yellow Clothes from http://cosplaydeal.com / Filename: tenue-Black-Mamba.jpg / Clothes of Beatrix Kiddo from the movie Kill Bill
+#Japanese clothes from http://ebay.com / Filename: japanese_clothes.jpg / japanese student clothes of Gogo Yubari from the movie Kill Bill
+#Nurse clothes from http://starwoon.com / Filename: nurse.jpg / Nurse clothes of Elle Driver from the movie Kill Bill
+#Kimono from http://cosplaydeal.com / Filename: Kimono.jpg / Kimono of Oren ishii from the movie Kill Bill

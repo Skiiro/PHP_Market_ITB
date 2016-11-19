@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="./../Style/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,7 +21,7 @@
 </head>
 <body>
 
-    <div id="haut" class="ui top fixed menu my-navbar">
+    <div id="haut" class="ui top fixed wide menu my-navbar">
         <a class="active item"">
             Home
         </a>

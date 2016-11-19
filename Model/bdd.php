@@ -201,6 +201,29 @@ class bdd
     }
 
     /**
+     * This function get all products in a certain category from the database
+     * @param $idCategory -> category id
+     * @return array -> Result from the database |null -> if an error occurs
+     */
+    function getProductByCategory($idCategory)
+    {
+        if($this->state) {
+            $sql = 'SELECT p.Id, p.Nom, p.Prix, p.Image, p.Description, cp.Nom AS "Categorie"
+                    FROM Produit p 
+                    INNER JOIN Categorie_Produit cp ON p.Id_Categorie_Produit = cp.Id
+                    WHERE cp.Id = :idCategory';
+            $request = $this->pdo->prepare($sql);
+            $success = $request->execute(array(':idCategory' => $idCategory));
+            if ($success == false)
+                return NULL;
+            else
+                return $request->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else
+            return NULL;
+    }
+
+    /**
      * This function get a single product searching by id
      * @param $id -> id
      * @return array -> Result from the database |null -> if an error occurs
@@ -355,6 +378,28 @@ class bdd
                     WHERE p.Id = :id';
             $request = $this->pdo->prepare($sql);
             $success = $request->execute(array(':id' => $id));
+            if ($success == false)
+                return NULL;
+            else
+                return $request->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else
+            return NULL;
+    }
+
+    /**
+     * This function get a single product searching by id
+     * @param $id -> id
+     * @return array -> Result from the database |null -> if an error occurs
+     */
+    function getCategoryProductByName($name)
+    {
+        if($this->state) {
+            $sql = 'SELECT Id, Nom
+                    FROM Categorie_Produit 
+                    WHERE Nom = :name';
+            $request = $this->pdo->prepare($sql);
+            $success = $request->execute(array(':name' => $name));
             if ($success == false)
                 return NULL;
             else
