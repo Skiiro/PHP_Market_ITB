@@ -1,0 +1,35 @@
+<div class="content-site ui container">
+    <h1>{{ type }}</h1>
+    <p class="underTitle">Here you will find all kind of {{ type }}</p>
+
+    <table class="ui celled large striped unstackable table">
+        <thead>
+        <tr><th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Order</th>
+        </tr></thead>
+        <tbody>
+        {% for item in product %}
+            <tr>
+                <td><img class="productImage" src="./..{{ item.Image }}"/></td>
+                <td>{{ item.Nom }}</td>
+                <td>{{ item.Description }}</td>
+                <td>{{ item.Prix }}</td>
+                <td>
+
+                </td>
+                <td>
+                    <div class="ui stackable buttons">
+                        <button class="ui button">Add to basket</button>
+                        <div class="or"></div>
+                        <button class="ui negative button">Order</button>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
