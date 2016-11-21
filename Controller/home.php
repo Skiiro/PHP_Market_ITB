@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'header.php';
 include './../Model/bdd.php';
 

@@ -178,6 +178,37 @@ class bdd
         }
     }
 
+    /**
+     * This function check a user with a nickname and a passwor exist in the database
+     * @param $nickname -> nickname
+     * @param $password -> password
+     * @return bool -> user can login or not
+     */
+    function checkLogin($nickname, $password)
+    {
+        if($this->state) {
+            $sql = 'SELECT *
+                    FROM Utilisateur
+                    WHERE Pseudonyme = :name
+                    AND Mot_De_Passe = :password';
+            $request = $this->pdo->prepare($sql);
+            $return = $request->execute(array(':name' => $nickname, ':password' => $password));
+            if($return)
+            {
+                if(isset($request->fetchAll(PDO::FETCH_ASSOC)[0]))
+                {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
     /////////////////////////////////////////////////////////////////PRODUCTS/////////////////////////////////////////////////////////////////
     /**
      * This function get all products from the database

@@ -22,23 +22,36 @@
 <body>
 
     <div id="haut" class="ui top fixed wide menu my-navbar">
-        <a class="item"">
+        <a class="item" onclick=document.location.href='http://localhost/market' ">
             Home
         </a>
-        <a class="item">
+        <a class="item" onclick=document.location.href='http://localhost/market/Controller/Weapons.php'>
             Weapons
         </a>
-        <a class="item">
+        <a class="item" onclick=document.location.href='http://localhost/market/Controller/cosplay.php'>
             Cosplay
         </a>
-        <div class="right menu">
-            <div class="ui pointing dropdown link item">
-                <span class="text">Login</span>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <div class="item">Sign in</div> <!--Se connecter-->
-                    <div class="item">Sign up</div> <!--S'enregistrer-->
-                </div>
-            </div>
-        </div>
+        <?php
+            session_start();
+            if(empty($_SESSION['nickname']))
+            {
+                echo "<div class=\"right menu\">
+                 <div class=\"ui pointing dropdown link item\">
+                       <span class=\"text\">Login</span>
+                      <i class=\"dropdown icon\"></i>
+                      <div class=\"menu\">
+                          <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/Login.php'>Sign in</div> <!--Se connecter-->
+                         <div class=\"item\">Sign up</div> <!--S'enregistrer-->
+                     </div>
+                    </div>
+                </div>";
+            }
+            else
+            {
+                echo "<div class=\"right menu\">
+                    <a class=\"item\">";
+                echo $_SESSION['nickname'];
+                echo "</a>";
+            }
+        ?>
     </div>

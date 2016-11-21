@@ -37,3 +37,15 @@ p.underTitle{
 .productImage{
     width: 120px;
 }
+
+.yellowText{
+    color: yellow;
+}
+
+.centerText{
+    text-align: center;
+}
+
+.transparentBackground{
+    background-color: transparent !important;
+}

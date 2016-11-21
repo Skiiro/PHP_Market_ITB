@@ -1,0 +1,46 @@
+<div class="content-site">
+    <div class="ui container">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h1 class="ui header">
+                    <div class="content">
+                        Log-in to your account
+                    </div>
+                </h1>
+                <form class="ui form" method="post">
+                    {% if Error != 0 %}
+                    <div class="ui negative message">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            {% if Error == 1 %}
+                            Your login is incorrect !
+                            {% elseif Error == 2 %}
+                            One or more champ is empty !
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="nickname" placeholder="Nickname">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <button class="ui fluid large black submit button" name="monBouton" value="submit"><p class="yellowText">Login</p></button>
+                    </div>
+                </form>
+
+                <div class="ui message ">
+                    <p class="centerText">New to us? <a href="#">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
