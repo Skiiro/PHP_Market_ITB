@@ -31,28 +31,32 @@
         <a class="item" onclick=document.location.href='http://localhost/market/Controller/cosplay.php'>
             Cosplay
         </a>
+        <div class="right menu">
+            <div class="ui pointing dropdown link item">
+                <span class="text">
         <?php
             session_start();
             if(empty($_SESSION['nickname']))
             {
-                echo "<div class=\"right menu\">
-                 <div class=\"ui pointing dropdown link item\">
-                       <span class=\"text\">Login</span>
+                echo "Login </span>
                       <i class=\"dropdown icon\"></i>
                       <div class=\"menu\">
                           <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/Login.php'>Sign in</div> <!--Se connecter-->
                          <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/SignUp.php'>Sign up</div> <!--S'enregistrer-->
                      </div>
-                    </div>
-                </div>";
+                    ";
             }
             else
             {
-                echo "<div class=\"right menu\">
-                    <a class=\"item\">";
                 echo $_SESSION['nickname'];
-                echo "</a>";
-                echo "</div>";
+                echo "</span>
+                      <i class=\"dropdown icon\"></i>
+                      <div class=\"menu\">
+                          <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/logout.php'>Logout</div> <!--Se deconnecter-->
+                     </div>
+                    ";
             }
         ?>
+            </div>
+        </div>
     </div>
