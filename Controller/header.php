@@ -41,7 +41,7 @@
                       <i class=\"dropdown icon\"></i>
                       <div class=\"menu\">
                           <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/Login.php'>Sign in</div> <!--Se connecter-->
-                         <div class=\"item\">Sign up</div> <!--S'enregistrer-->
+                         <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/SignUp.php'>Sign up</div> <!--S'enregistrer-->
                      </div>
                     </div>
                 </div>";
@@ -52,6 +52,7 @@
                     <a class=\"item\">";
                 echo $_SESSION['nickname'];
                 echo "</a>";
+                echo "</div>";
             }
         ?>
     </div>
