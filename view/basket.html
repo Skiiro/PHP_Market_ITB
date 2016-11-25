@@ -1,0 +1,42 @@
+<div class="content-site">
+    <div class="ui container">
+        <h1 class="ui header" >Basket</h1>
+        <p class="underTitle">Here, you will find products added to the basket</p>
+        {% if product != null %}
+            <table class="ui celled large striped unstackable table">
+                <thead>
+                <tr><th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in product %}
+                <tr>
+                    <td><img class="productImage" src="./..{{ item.Image }}"/></td>
+                    <td>{{ item.Nom }}</td>
+                    <td>{{ item.Prix }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <form method="post">
+                            <button class="ui labeled icon button" name="deleteButton" value="item.Id">
+                                <i class="trash icon"></i>
+                                Delete one
+                            </button>
+                            <button class="ui labeled icon button" name="deleteAllButton" value="item.Id">
+                                <i class="trash icon"></i>
+                                Delete all
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="basket" >Your basket is empty !</p>
+        {% endif %}
+    </div>
+</div>

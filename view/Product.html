@@ -1,16 +1,36 @@
 <div class="content-site ui container">
     <h1>{{ type }}</h1>
     <p class="underTitle">Here you will find all kind of {{ type }}</p>
+    {% if Error != 0 %} <!-- NO_PROBLEM -->
+        {% if Error == 4 %} <!-- NO_BDD_ERROR -->
+            <div class="ui positive message">
+                <i class="close icon"></i>
+                <div class="header">
+                    Product added to the basket!
+                </div>
+            </div>
+        {% else %} <!-- We got a problem -->
+            <div class="ui negative message">
+                <i class="close icon"></i>
+                <div class="header">
+                    {% if Error == 5 or Error == 7 %} <!-- BDD_ERROR or BAD_QUANTITY -->
+                        Sorry, something bad happened with the server.
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
 
     <table class="ui celled large striped unstackable table">
         <thead>
-        <tr><th>Image</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Order</th>
-        </tr></thead>
+            <tr><th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Order</th>
+            </tr>
+        </thead>
         <tbody>
         {% for item in product %}
             <tr>
@@ -33,11 +53,13 @@
                     </div>
                 </td>
                 <td>
-                    <div class="ui stackable buttons">
-                        <button class="ui button">Add to basket</button>
-                        <div class="or"></div>
-                        <button class="ui negative button">Order</button>
-                    </div>
+                    <form method="post">
+                        <div class="ui stackable buttons">
+                            <button class="ui submit button" name="basket" value="{{ item.Id }}">Add to basket</button>
+                            <div class="or"></div>
+                            <button class="ui negative submit button">Order</button>
+                        </div>
+                    </form>
                 </td>
             </tr>
         {% endfor %}

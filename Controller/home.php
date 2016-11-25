@@ -1,7 +1,9 @@
 <?php
-session_start();
+
 include 'header.php';
 include './../Model/bdd.php';
+
+session_start();
 
 require './../vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('./../view');

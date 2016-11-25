@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="./../Style/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 
 
@@ -32,6 +33,9 @@
             Cosplay
         </a>
         <div class="right menu">
+            <a class="item" onclick=document.location.href='http://localhost/market/Controller/basket.php'>
+                Basket
+            </a>
             <div class="ui pointing dropdown link item">
                 <span class="text">
         <?php

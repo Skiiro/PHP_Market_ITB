@@ -55,6 +55,15 @@ p.underTitle{
     padding-left: 300px !important;
 }
 
+.basket{
+    font-family: 'Anton', sans-serif;
+    font-size: 300%;
+    color: white;
+    padding-top: 20px;
+    text-align: center;
+    -webkit-transform: rotate(10deg);
+}
+
 @media screen and (max-width:992px) {
     .content-login{
         padding-right: 0px;
