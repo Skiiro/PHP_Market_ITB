@@ -2,7 +2,7 @@
 
 class basket
 {
-    var $product;
+    var $products;
 
     /**
      * basket constructor.
@@ -23,14 +23,14 @@ class basket
         {
             return BAD_QUANTITY;
         }
-        if(isset($this->product[$idProduct]))
+        if(isset($this->products[$idProduct]))
         {
-            $this->product[$idProduct] =  $this->product[$idProduct] + $quantity;
+            $this->products[$idProduct] =  $this->products[$idProduct] + $quantity;
             return NO_PROBLEM;
         }
         else
         {
-            $this->product[$idProduct] = $quantity;
+            $this->products[$idProduct] = $quantity;
         }
         return NO_PROBLEM;
     }
@@ -43,24 +43,43 @@ class basket
      */
     public function deleteProduct($idProduct, $quantity)
     {
-        if(isset($this->product[$idProduct]))
+        if(isset($this->products[$idProduct]))
         {
-            if($this->product[$idProduct] < $quantity)
+            if($this->products[$idProduct] < $quantity)
             {
                 return BAD_QUANTITY;
             }
             else
             {
-                if(($this->product[$idProduct] - $quantity) < 1)
+                if(($this->products[$idProduct] - $quantity) < 1)
                 {
-                    unset($this->product[$idProduct]);
+                    unset($this->products[$idProduct]);
                 }
                 else
                 {
-                    $this->product[$idProduct] =  $this->product[$idProduct] - $quantity;
+                    $this->products[$idProduct] =  $this->products[$idProduct] - $quantity;
                 }
                 return NO_PROBLEM;
             }
+        }
+        else
+        {
+            return NO_FOUND;
+        }
+    }
+
+    /**
+     * delete a product on a basket
+     * @param $idProduct -> id product
+     * @param $quantity -> quantity
+     * @return int -> Error code
+     */
+    public function deleteAllQuantityOfProduct($idProduct)
+    {
+        if(isset($this->products[$idProduct]))
+        {
+            unset($this->products[$idProduct]);
+            return NO_PROBLEM;
         }
         else
         {
@@ -74,9 +93,22 @@ class basket
      */
     public function getProducts()
     {
-        return $this->product;
+        return $this->products;
     }
 
-
-
+    /**
+     * Send the session basket to the database
+     * @param $bdd -> Database
+     * @param $user -> Username
+     */
+    public function sendToBDD($user)
+    {
+        $database = new bdd();
+        $database->deleteBasket($user);
+        foreach($this->products as $id => $quantity)
+        {
+            for($i=0; $i<$quantity; $i++)
+                $database->insertBasket($user, $id);
+        }
+    }
 }

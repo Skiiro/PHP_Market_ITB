@@ -3,8 +3,6 @@
 include 'header.php';
 include './../Model/bdd.php';
 
-session_start();
-
 require './../vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('./../view');
 $twig = new Twig_Environment($loader);

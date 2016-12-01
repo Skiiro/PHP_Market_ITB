@@ -18,5 +18,6 @@ define("BDD_ERROR", 5);
 //Basket
 define("NO_FOUND", 6);
 define("BAD_QUANTITY", 7);
+define("BAD_LOGIN", 8);
 
 define("NO_PROBLEM", 0);

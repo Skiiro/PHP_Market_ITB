@@ -64,6 +64,10 @@ p.underTitle{
     -webkit-transform: rotate(10deg);
 }
 
+.rightElements{
+    text-align: right;
+}
+
 @media screen and (max-width:992px) {
     .content-login{
         padding-right: 0px;

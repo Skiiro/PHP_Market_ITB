@@ -38,29 +38,29 @@
                 <td>{{ item.Nom }}</td>
                 <td>{{ item.Description }}</td>
                 <td>{{ item.Prix }}</td>
-                <td>
-                    <div class="ui compact selection dropdown">
-                        <input name="quantity" type="hidden">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">Quantity</div>
-                        <div class="menu">
-                            <div class="item" data-value="1">1</div>
-                            <div class="item" data-value="2">2</div>
-                            <div class="item" data-value="3">3</div>
-                            <div class="item" data-value="4">4</div>
-                            <div class="item" data-value="5">5</div>
+                <form method="post">
+                    <td>
+                        <div class="ui compact selection dropdown">
+                            <input name="quantity" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">1</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">1</div>
+                                <div class="item" data-value="2">2</div>
+                                <div class="item" data-value="3">3</div>
+                                <div class="item" data-value="4">4</div>
+                                <div class="item" data-value="5">5</div>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td>
-                    <form method="post">
+                    </td>
+                    <td>
                         <div class="ui stackable buttons">
                             <button class="ui submit button" name="basket" value="{{ item.Id }}">Add to basket</button>
                             <div class="or"></div>
                             <button class="ui negative submit button">Order</button>
                         </div>
-                    </form>
-                </td>
+                    </td>
+                </form>
             </tr>
         {% endfor %}
         </tbody>
