@@ -125,7 +125,7 @@ class bdd
     {
         if($this->state) {
             $sql = 'INSERT INTO Utilisateur (Pseudonyme, Mot_De_Passe, Nom, Prenom, Adresse_Postal, Adresse_Mail)
-                    VALUES(:nickname, :password, :lastName, :name, :address, :mail)';
+                    VALUES(:nickname, PASSWORD(:password), :lastName, :name, :address, :mail)';
             $request = $this->pdo->prepare($sql);
             return $request->execute(array(':nickname' => $nickname, ':password' => $password, ':lastName' => $lastName, ':name' => $name, 'address' => $address, 'mail' => $mail));
         }
@@ -137,7 +137,7 @@ class bdd
     /**
      * Get the password from a user
      * @param $nickname -> nickname
-     * @return array -> Result from the database |null -> if an error occurs
+     * @return array -> Result from the database crypted |null -> if an error occurs
      */
     function getPassword($nickname)
     {
@@ -168,7 +168,7 @@ class bdd
     {
         if($this->state) {
             $sql = 'UPDATE Utilisateur
-                    SET Mot_De_Passe = :password
+                    SET Mot_De_Passe = PASSWORD(:password)
                     WHERE Pseudonyme = :nickname';
             $request = $this->pdo->prepare($sql);
             return $request->execute(array(':nickname' => $nickname, ':password' => $password));
@@ -190,7 +190,7 @@ class bdd
             $sql = 'SELECT *
                     FROM Utilisateur
                     WHERE Pseudonyme = :name
-                    AND Mot_De_Passe = :password';
+                    AND Mot_De_Passe = PASSWORD(:password)';
             $request = $this->pdo->prepare($sql);
             $return = $request->execute(array(':name' => $nickname, ':password' => $password));
             if($return)
