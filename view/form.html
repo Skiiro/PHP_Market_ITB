@@ -1,0 +1,147 @@
+<div class="content-site">
+    <div class="ui container">
+        <div class="ui middle aligned center aligned grid">
+            <form class="ui form" method="post">
+                {% if Type == "Utilisateur" %}
+                    {% if Action == "edit" %}
+                        <h4 class="ui dividing header">Edit Users</h4>
+                        <div class="field">
+                            <label>Login information</label>
+                            <div class="two fields">
+                                <div class="twelve wide field">
+                                    <input name="nickname" type="text" disabled value="{{values.Pseudonyme}}">
+                                </div>
+                                <div class="twelve wide field">
+                                    <input name="password" placeholder="Password" type="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Email</label>
+                            <div class="field">
+                                <input name="email" placeholder="Email" type="text" value="{{values.Adresse_Mail}}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Name</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input name="firstname" placeholder="First Name" type="text" value="{{values.Prenom}}">
+                                </div>
+                                <div class="field">
+                                    <input name="lastname" placeholder="Last Name" type="text" value="{{values.Nom}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Billing Address</label>
+                            <div class="fields">
+                                <div class="twelve wide field">
+                                    <input name="address" placeholder="Street Address" type="text">
+                                </div>
+                                <div class="four wide field">
+                                    <input name="number" placeholder="Number #" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ui button" name="boutonEdit" value="{{values.Pseudonyme}}">OK</button>
+                    {% elseif Action == "new" %}
+                        <h4 class="ui dividing header">Add new user</h4>
+                        <div class="field">
+                            <label>Login information</label>
+                            <div class="two fields">
+                                <div class="twelve wide field">
+                                    <input name="nickname" placeholder="Nickname" type="text">
+                                </div>
+                                <div class="twelve wide field">
+                                    <input name="password" placeholder="Password" type="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Email</label>
+                            <div class="field">
+                                <input name="email" placeholder="Email" type="text">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Name</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input name="firstname" placeholder="First Name" type="text">
+                                </div>
+                                <div class="field">
+                                    <input name="lastname" placeholder="Last Name" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Billing Address</label>
+                            <div class="fields">
+                                <div class="twelve wide field">
+                                    <input name="address" placeholder="Street Address" type="text">
+                                </div>
+                                <div class="four wide field">
+                                    <input name="number" placeholder="Number #" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ui button" name="boutonNew">OK</button>
+                    {% endif %}
+                {% elseif Type == "Product" %}
+                    {% if Action == "edit" %}
+                        <h4 class="ui dividing header">Edit Product</h4>
+                        <div class="field">
+                            <label>Name and Price</label>
+                            <div class="two fields">
+                                <div class="twelve wide field">
+                                    <input name="name" type="text" value="{{values.Nom}}">
+                                </div>
+                                <div class="twelve wide field">
+                                    <input name="price" type="text" value="{{values.Prix}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Description</label>
+                            <div class="field">
+                                <input name="description" placeholder="Email" type="text" value="{{values.Description}}">
+                            </div>
+                        </div>
+                        <button class="ui button" name="boutonEdit" value="{{values.Id}}">OK</button>
+                    {% elseif Action == "new" %}
+                        <h4 class="ui dividing header">Add Product</h4>
+                        <div class="field">
+                            <label>Name and Price</label>
+                            <div class="two fields">
+                                <div class="twelve wide field">
+                                    <input name="name" placeholder="Name" type="text">
+                                </div>
+                                <div class="twelve wide field">
+                                    <input name="price" placeholder="Price" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Description</label>
+                            <div class="field">
+                                <input name="description" placeholder="Description" type="text">
+                            </div>
+                        </div>
+                        <div class="ui form">
+                            <div class="field">
+                                <label>Category</label>
+                                <select name="category" class="ui dropdown">
+                                    <option value="">Select category</option>
+                                    <option value="1">Weapon</option>
+                                    <option value="2">Cosplay</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="ui button" name="boutonNew">OK</button>
+                    {% endif %}
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>

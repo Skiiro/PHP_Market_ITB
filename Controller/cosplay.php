@@ -69,6 +69,33 @@ if(isset($_POST['basket'])) //add product to the basket
         ));
     }
 }
+else if(isset($_POST['Order']))
+{
+    if(isset($_SESSION['nickname']))
+    {
+        if($bdd->createBill($_SESSION['nickname'],array($_POST['Order'])))
+        {
+            echo $twig->render('confirmation.html', array(
+            ));
+        }
+        else
+        {
+            echo $twig->render('Product.html', array(
+                'type' => "Cosplay",
+                'product' => $productWeapons,
+                'Error' => BDD_ERROR
+            ));
+        }
+    }
+    else
+    {
+        echo $twig->render('Product.html', array(
+            'type' => "Cosplay",
+            'product' => $productWeapons,
+            'Error' => BAD_LOGIN
+        ));
+    }
+}
 else
 {
     echo $twig->render('Product.html', array(

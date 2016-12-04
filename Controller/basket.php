@@ -79,9 +79,6 @@ if(isset($_POST['buy']))
         }
         $bdd->createBill($_SESSION['nickname'], $produits);
         echo $twig->render('confirmation.html', array(
-            'product' => $productsBasket,
-            'total' => $total,
-            'Error' => BAD_LOGIN
         ));
     }
     else

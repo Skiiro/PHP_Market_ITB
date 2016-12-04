@@ -47,7 +47,7 @@
                       <div class=\"menu\">
                           <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/Login.php'>Sign in</div> <!--Se connecter-->
                          <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/SignUp.php'>Sign up</div> <!--S'enregistrer-->
-                     </div>
+                     </div></div>
                     ";
             }
             else
@@ -55,10 +55,19 @@
                 echo $_SESSION['nickname'];
                 echo "</span>
                       <i class=\"dropdown icon\"></i>
-                      <div class=\"menu\">
-                          <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/logout.php'>Logout</div> <!--Se deconnecter-->
-                     </div>
-                    ";
+                      <div class=\"menu\">";
+                echo "<div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/logout.php'>Logout</div> <!--Se deconnecter-->
+                     </div></div>";
+                if($_SESSION['nickname'] == "admin")
+                {
+                    echo '<div class="ui pointing dropdown link item">
+                          <span class="text">Administration</span>
+                      <i class="dropdown icon"></i>
+                      <div class="menu">
+                          <div class="item" onclick=document.location.href=\'http://localhost/market/Controller/users.php\'>User</div>
+                          <div class="item" onclick=document.location.href=\'http://localhost/market/Controller/product.php\'>Product</div> 
+                     </div></div>';
+                }
             }
         ?>
             </div>

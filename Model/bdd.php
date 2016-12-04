@@ -35,8 +35,8 @@ class bdd
     function getUsers()
     {
         if($this->state) {
-            $sql = "SELECT Pseudonyme, Nom, Prenom, Adresse_Postal, Adresse_Mail " .
-                "FROM Utilisateur ";
+            $sql = 'SELECT Pseudonyme, Nom, Prenom, Adresse_Postal, Adresse_Mail
+                    FROM Utilisateur';
             $request = $this->pdo->prepare($sql);
             $success = $request->execute();
             if ($success == false)
@@ -58,7 +58,7 @@ class bdd
         if($this->state) {
             $sql = 'SELECT Pseudonyme, Nom, Prenom, Adresse_Postal, Adresse_Mail 
                     FROM Utilisateur
-                     WHERE Pseudonyme = :nickname';
+                    WHERE Pseudonyme = :nickname';
             $request = $this->pdo->prepare($sql);
             $success = $request->execute(array(':nickname' => $nickname));
             if ($success == false)
@@ -473,7 +473,8 @@ class bdd
     function createBill($name, $products)
     {
         if($this->state) {
-            $now = date("Y/m/d H:i:d");
+            $now = date("Y/m/d H:i:s");
+            echo $now;
             $sql = 'INSERT INTO Facture (Date, Pseudonyme_Utilisateur)
                     VALUES(:date, :name)';
             $request = $this->pdo->prepare($sql);
@@ -485,12 +486,18 @@ class bdd
                     VALUES((SELECT Id FROM Facture WHERE Pseudonyme_Utilisateur = :name AND Date = :date), :idProduit)';
                     $request = $this->pdo->prepare($sql);
                     if($request->execute(array(':name' => $name, ':date' => $now, ':idProduit' => $value)) == false)
+                    {
+                        var_dump($request->errorInfo());
                         return false;
+                    }
+
                 }
                 return true;
             }
-            else
+            else{
                 return false;
+            }
+
         }
         else {
             return false;

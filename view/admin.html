@@ -1,0 +1,71 @@
+<div class="content-site">
+    <div class="ui container">
+        <table class="ui celled large striped unstackable table">
+            <thead>
+                <tr>
+                    {% if Type == "Utilisateur" %}
+                        <th>Nickname</th>
+                        <th>Last name</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    {%  elseif Type == "Product" %}
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in values %}
+                <tr>
+                    {% if Type == "Utilisateur" %}
+                        <td>{{ item.Pseudonyme }}</td>
+                        <td>{{ item.Nom }}</td>
+                        <td>{{ item.Prenom }}</td>
+                        <td>{{ item.Adresse_Postal }}</td>
+                        <td>{{ item.Adresse_Mail }}</td>
+                        <td>
+                            <form method="post">
+                                <button class="circular ui icon button submit" name="editButton" value="{{ item.Pseudonyme }}">
+                                    <i class="write icon yellow"></i>
+                                </button>
+                                <button class="circular ui icon button submit" name="deleteButton" value="{{ item.Pseudonyme }}">
+                                    <i class="trash icon black"></i>
+                                </button>
+                            </form>
+                        </td>
+                    {% elseif Type == "Product" %}
+                        <td>{{ item.Id }}</td>
+                        <td>{{ item.Nom }}</td>
+                        <td>{{ item.Prix }}</td>
+                        <td><img class="productImage" src="./..{{ item.Image }}"/></td>
+                        <td>{{ item.Description }}</td>
+                        <td>
+                            <form method="post">
+                                <button class="circular ui icon button submit" name="editButton" value="{{ item.Id }}">
+                                    <i class="write icon yellow"></i>
+                                </button>
+                                <button class="circular ui icon button submit" name="deleteButton" value="{{ item.Id }}">
+                                    <i class="trash icon black"></i>
+                                </button>
+                            </form>
+                        </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="ui two fields segment">
+            <form method="post"><h3 class="rightElements">Add new one&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="ui labeled icon button submit" name="add">
+                <i class="plus icon"></i>
+                Add
+            </button></h3></form>
+        </div>
+    </div>
+</div>

@@ -15,6 +15,8 @@
                 <div class="header">
                     {% if Error == 5 or Error == 7 %} <!-- BDD_ERROR or BAD_QUANTITY -->
                         Sorry, something bad happened with the server.
+                    {% elseif Error == 8 %} <!-- BAD_LOGIN -->
+                        You must login to order directly a product.
                     {% endif %}
                 </div>
             </div>
@@ -57,7 +59,7 @@
                         <div class="ui stackable buttons">
                             <button class="ui submit button" name="basket" value="{{ item.Id }}">Add to basket</button>
                             <div class="or"></div>
-                            <button class="ui negative submit button">Order</button>
+                            <button class="ui negative submit button" name="Order" value="{{ item.Id }}">Order</button>
                         </div>
                     </td>
                 </form>
