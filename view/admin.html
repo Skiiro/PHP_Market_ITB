@@ -1,5 +1,10 @@
 <div class="content-site">
     <div class="ui container">
+        {% if Type == "Utilisateur" %}
+            <div class="ui segment">
+                <h3>Note: You can't delete a user who have bills</h3>
+            </div>
+        {% endif %}
         <table class="ui celled large striped unstackable table">
             <thead>
                 <tr>
@@ -13,7 +18,7 @@
                     {%  elseif Type == "Product" %}
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Price</th>
+                        <th>Price(€)</th>
                         <th>Image</th>
                         <th>Description</th>
                         <th>Action</th>

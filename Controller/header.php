@@ -22,7 +22,7 @@
 </head>
 <body>
 
-    <div id="haut" class="ui top fixed wide menu my-navbar">
+    <div id="haut" class="ui top fixed large wide menu my-navbar">
         <a class="item" onclick=document.location.href='http://localhost/market' ">
             Home
         </a>
@@ -47,7 +47,7 @@
                       <div class=\"menu\">
                           <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/Login.php'>Sign in</div> <!--Se connecter-->
                          <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/SignUp.php'>Sign up</div> <!--S'enregistrer-->
-                     </div></div>
+                     </div>
                     ";
             }
             else
@@ -56,7 +56,8 @@
                 echo "</span>
                       <i class=\"dropdown icon\"></i>
                       <div class=\"menu\">";
-                echo "<div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/myAccount.php'>Change password</div><div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/logout.php'>Logout</div>
+                echo "<div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/myAccount.php'>Change password</div>
+                      <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/logout.php'>Logout</div>
                       </div></div>";
                 if($_SESSION['nickname'] == "admin")
                 {

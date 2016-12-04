@@ -1,31 +1,31 @@
 <div class="content-site">
     <div class="ui container">
         <div class="ui middle aligned center aligned grid">
-            {% if Error != 0 %} <!-- NO_PROBLEM -->
-                {% if Error == 4 %} <!-- NO_BDD_ERROR -->
-                    <div class="ui positive message">
-                        <i class="close icon"></i>
-                        <div class="header">
-                            Registration complete !
-                        </div>
-                        You can now login with your nickname and your password.
-                    </div>
-                {% else %} <!-- We got a problem -->
-                    <div class="ui negative message">
-                        <i class="close icon"></i>
-                        <div class="header">
-                            {% if Error == 2 %} <!-- BAD_FIELD -->
-                                One or more champ is empty !
-                            {% elseif Error == 3 %} <!-- BAD_NICKNAME -->
-                                Sorry, your nickname has been already taken
-                            {% elseif Error == 5 %} <!-- BDD_ERROR -->
-                                Sorry, something bad happened with the server.
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endif %}
-            {% endif %}
             <form class="ui form" method="post" action="./../Controller/SignUp.php">
+                {% if Error != 0 %} <!-- NO_PROBLEM -->
+                    {% if Error == 4 %} <!-- NO_BDD_ERROR -->
+                        <div class="ui positive message">
+                            <i class="close icon"></i>
+                            <div class="header">
+                                Registration complete !
+                            </div>
+                            You can now login with your nickname and your password.
+                        </div>
+                        {% else %} <!-- We got a problem -->
+                        <div class="ui negative message">
+                            <i class="close icon"></i>
+                            <div class="header">
+                                {% if Error == 2 %} <!-- BAD_FIELD -->
+                                    One or more champ is empty !
+                                {% elseif Error == 3 %} <!-- BAD_NICKNAME -->
+                                    Sorry, your nickname has been already taken
+                                {% elseif Error == 5 %} <!-- BDD_ERROR -->
+                                    Sorry, something bad happened with the server.
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
                 <h4 class="ui dividing header">Shipping Information</h4>
                 <div class="field">
                     <label>Login information</label>

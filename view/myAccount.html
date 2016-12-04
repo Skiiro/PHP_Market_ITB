@@ -3,25 +3,25 @@
         <div class="ui middle aligned center aligned grid">
             <form class="ui form" method="post">
                 {% if Error != 0 %} <!-- NO_PROBLEM -->
-                {% if Error == 4 %} <!-- NO_BDD_ERROR -->
-                <div class="ui positive message">
-                    <i class="close icon"></i>
-                    <div class="header">
-                        Password changed !
-                    </div>
-                </div>
-                {% else %} <!-- We got a problem -->
-                <div class="ui negative message">
-                    <i class="close icon"></i>
-                    <div class="header">
-                        {% if Error == 5 %} <!-- BDD_ERROR -->
-                        Sorry, something bad happened with the server.
-                        {% elseif Error == 8 %} <!-- BAD_LOGIN -->
-                        Your old password is bad
-                        {% endif %}
-                    </div>
-                </div>
-                {% endif %}
+                    {% if Error == 4 %} <!-- NO_BDD_ERROR -->
+                        <div class="ui positive message">
+                            <i class="close icon"></i>
+                            <div class="header">
+                                Password changed !
+                            </div>
+                        </div>
+                    {% else %} <!-- We got a problem -->
+                        <div class="ui negative message">
+                            <i class="close icon"></i>
+                            <div class="header">
+                                {% if Error == 5 %} <!-- BDD_ERROR -->
+                                Sorry, something bad happened with the server.
+                                {% elseif Error == 8 %} <!-- BAD_LOGIN -->
+                                Your old password is bad
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
                 <h4 class="ui dividing header">Edit password</h4>
                 <div class="field">
