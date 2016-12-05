@@ -1,0 +1,29 @@
+<div class="content-site">
+    <div class="ui container">
+        <div class="ui middle aligned center aligned grid">
+            <form class="ui form" method="post">
+                <table class="ui celled large striped unstackable table">
+                    <thead>
+                    <tr><th>Id</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in order %}
+                    <tr>
+                        <td>{{ item.Id }}</td>
+                        <td>{{ item.Date }}</td>
+                        <td>{{ item.Price }}</td>
+                        <td>
+                            <button class="ui button" name="OK" value="{{item.Id}}">Get details</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

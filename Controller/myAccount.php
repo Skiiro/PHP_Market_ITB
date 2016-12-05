@@ -42,3 +42,5 @@ else
     ));
 }
 
+
+include 'footer.php';

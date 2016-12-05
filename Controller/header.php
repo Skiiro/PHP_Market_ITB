@@ -57,6 +57,7 @@
                       <i class=\"dropdown icon\"></i>
                       <div class=\"menu\">";
                 echo "<div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/myAccount.php'>Change password</div>
+                      <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/order.php'>Orders</div>
                       <div class=\"item\" onclick=document.location.href='http://localhost/market/Controller/logout.php'>Logout</div>
                       </div></div>";
                 if($_SESSION['nickname'] == "admin")

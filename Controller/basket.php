@@ -72,12 +72,19 @@ if(isset($_POST['buy']))
     {
         $produits = null;
         $i=0;
+        $y=0;
         foreach($productsBasket as $prod)
         {
-            $produits[$i] = $prod["Id"];
-            $i +=1;
+            echo $prod['quantity'].PHP_EOL;
+            for($i=0; $i<$prod['quantity']; $i++)
+            {
+                echo $i.PHP_EOL;
+                $produits[$i+$y] = $prod["Id"];
+            }
+            $y += $i;
         }
         $bdd->createBill($_SESSION['nickname'], $produits);
+        $bdd->deleteBasket($_SESSION['nickname']);
         echo $twig->render('confirmation.html', array(
         ));
     }
